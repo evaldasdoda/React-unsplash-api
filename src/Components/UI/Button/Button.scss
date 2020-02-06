@@ -1,0 +1,14 @@
+@import "../../../Assets/styles/setup";
+
+.BUTTON {
+    background-color: transparent;
+    border: 1px solid $black;
+    padding: $space-xxs $space-xs;
+    &:active,
+    &:hover {
+    }
+    &-rev {
+    }
+    &-active {
+    }
+}
