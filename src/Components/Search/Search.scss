@@ -1,4 +1,14 @@
 @import '../../Assets/style.scss';
 
 .SEARCH {
+    min-height: 70vh;
+    &__container {
+        margin: $space-md 0 0 0;
+        &-pagination {
+            margin: $space-md 0 0 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+        }
+    }
 }

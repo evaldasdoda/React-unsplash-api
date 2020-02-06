@@ -1,11 +1,15 @@
-@import "../../../Assets/styles/setup";
+@import '../../../Assets/style.scss';
 
 .BUTTON {
     background-color: transparent;
-    border: 1px solid $black;
-    padding: $space-xxs $space-xs;
+    border: 2px solid $orange;
+    border-radius: $radius-md;
+    padding: $space-xxs $space-sm;
+    transition: all $duration-xs;
     &:active,
     &:hover {
+        border: 2px solid $d-orange;
+        border-radius: $radius-sm;
     }
     &-rev {
     }

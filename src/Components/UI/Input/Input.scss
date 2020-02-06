@@ -1,0 +1,18 @@
+@import '../../../Assets/style.scss';
+
+.INPUT {
+    border: 2px solid $orange;
+    border-radius: $radius-md;
+    width: 100%;
+    padding: $space-xxs $space-sm;
+    transition: all $duration-xs;
+    &:focus,
+    &:hover {
+        color: $d-orange;
+        border: 2px solid $d-orange;
+        border-radius: $radius-sm;
+    }
+    &::placeholder {
+        color: $orange;
+    }
+}
