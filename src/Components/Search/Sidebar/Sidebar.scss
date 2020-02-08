@@ -5,6 +5,9 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        @media screen and (max-width: $xs) {
+            display: none;
+        }
     }
     &__saved {
         border: 2px solid $orange;
@@ -12,6 +15,13 @@
         margin: $space-sm 0 0 0;
         padding: $space-sm;
         transition: all $duration-xs;
+        @media screen and (max-width: $xs) {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            background-color: $white;
+            width: 100%;
+        }
         &:hover {
             border-radius: $radius-sm;
             border: 2px solid $d-orange;

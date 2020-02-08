@@ -12,24 +12,6 @@ $red: #dd4242 !default;
 
 $textmain1: #2b2b2e !default; // Main body on light, p and etc.
 $textmain2: #dddddd !default; // Main body on dark, p and etc.
-$textheadings1: #2b2b2e !default; // Headings on light, text
-$textheadings2: #2b2b2e !default; // Headings on dark, text
-$textheadings3: #ffffff !default; // Headings on dark, text
-$textheadings4: #333333 !default; // Headings on light, text
-$textplaceholders1: #dbddde !default; // Text for placeholders
-$textnav1: #555555 !default; // Nav text
-$textbuttons1: #ffffff !default; // Button text
-$textbuttons2: #2b2b2e !default; // Button text
-$textlinks1: #2b2b2e !default; // Links
-$textlinks2: #2b2b2e !default; // Links
-
-$bordermain1: #f0f0f0 !default; // Borders
-$bordermain2: #4b4b4d !default; // Borders
-$borderinputs: #dbddde !default; // Input borders
-$borderinputsfocus: #999999 !default; // Input borders
-
-$shadownav: 0 3px 10px 0 rgba($black, 0.06) !default; // Nav shadow
-$shadowelements: 10px 10px 20px 0px rgba(0, 0, 0, 0.1) !default; // Elements shadow
 
 /*Durations*/
 /*-----------------------------------------------------------------------------*/
@@ -69,7 +51,8 @@ $xl: 1440px !default;
 $lg: 1280px !default;
 $md: 1024px !default;
 $sm: 768px !default;
-$xs: 320px !default;
+$xs: 575px !default;
+$xxs: 320px !default;
 
 /*Grid*/
 /*-----------------------------------------------------------------------------*/

@@ -23,7 +23,8 @@ class Search extends React.Component {
             showBtn: false,
             disabledBtn: true,
             page: 1,
-            err: ''
+            err: '',
+            showSidebar: false
         };
     }
     handlePagination(type) {
@@ -85,6 +86,12 @@ class Search extends React.Component {
         this.setState({ err: '' });
     }
 
+    handleShow() {
+        this.setState(prevState => ({
+            showSidebar: !prevState.showSidebar
+        }));
+    }
+
     render() {
         return (
             <section className="SECTION">
@@ -113,6 +120,16 @@ class Search extends React.Component {
                                             X
                                         </span>
                                     </div>
+                                    <div className="container">
+                                        <div className="row">
+                                            <div className="SEARCH__container-mobileBtn">
+                                                <Button clicked={() => this.handleSubmit(this.state.page)} type='submit'> Search </Button>
+                                                <Button clicked={() => this.handleShow()} > Saved </Button>
+                                                <Button > Save </Button>
+                                            </div>
+                                        </div>
+
+                                    </div>
                                     <div className="row">
                                         {this.state.result.map(photo => (
                                             <div className="col" key={photo.id}>
@@ -140,7 +157,7 @@ class Search extends React.Component {
                                     </div>
                                 </div>
                                 <div className="col-sm-4">
-                                    <Sidebar search={() => this.handleSubmit(this.state.page)} />
+                                    <Sidebar show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
                                 </div>
                             </div>
                         </div>

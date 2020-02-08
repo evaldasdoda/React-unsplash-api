@@ -30,5 +30,15 @@
                 }
             }
         }
+        &-mobileBtn{
+            display: none;
+
+            @media screen and (max-width: $xs) {
+                margin: $space-sm 0 0 0;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
     }
 }
