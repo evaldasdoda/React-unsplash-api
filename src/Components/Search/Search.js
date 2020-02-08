@@ -7,6 +7,7 @@ import Input from '../UI/Input/Input';
 import Button from '../UI/Button/Button';
 import ImageCard from '../ImageCard/ImageCard';
 import Sidebar from './Sidebar/Sidebar';
+import Loader from '../UI/Loader/Loader';
 
 // Styles
 require('./Search.scss');
@@ -21,7 +22,8 @@ class Search extends React.Component {
             loading: false,
             showBtn: false,
             disabledBtn: true,
-            page: 1
+            page: 1,
+            err: ''
         };
     }
     handlePagination(type) {
@@ -36,6 +38,7 @@ class Search extends React.Component {
         }
         if (type === 'prev') {
             nextPage = _.clone(this.state.page) - 1;
+            this.setState({ err: '' });
             this.handleSubmit(nextPage);
             if (nextPage === 1) {
                 this.setState({ disabledBtn: true });
@@ -59,24 +62,37 @@ class Search extends React.Component {
 
         this.setState({ loading: true });
 
+        console.log('[Submit] -' + this.state.photo);
+
         axios
             .get(URL)
             .then(response => {
+                if (response.data.results.length === 0) {
+                    this.setState({ err: 'Sorry, there is no more images :(', loading: false });
+                    return;
+                }
                 this.setState({ result: response.data.results, loading: false, showBtn: true, page: pageNumber });
             })
             .catch(error => {
-                console.log(error);
-                this.setState({ loading: false });
+                this.setState({ loading: false, err: 'Server error!' });
             });
+    }
+    closeErr() {
+        this.setState({ err: '' });
     }
 
     render() {
         return (
             <section className="SECTION">
+                <div className="loader" style={{ display: this.state.loading ? '' : 'none' }}>
+                    <Loader />
+                </div>
                 <div className="SEARCH">
                     <div className="container">
                         <div className="row">
-                            <h1>Unsplash Photo search</h1>
+                            <div className="SEARCH__title">
+                                <h1>Unsplash Photo search</h1>
+                            </div>
                         </div>
                         <div className="SEARCH__container">
                             <div className="row">
@@ -87,6 +103,12 @@ class Search extends React.Component {
                                         name="photo"
                                         placeholder="Search for Photos..."
                                     />
+                                    <div className="SEARCH__container-err" style={{ display: this.state.err ? '' : 'none' }}>
+                                        {this.state.err}{' '}
+                                        <span className="closeErr" onClick={() => this.closeErr()}>
+                                            X
+                                        </span>
+                                    </div>
                                     <div className="row">
                                         {this.state.result.map(photo => (
                                             <div className="col" key={photo.id}>

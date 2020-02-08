@@ -1,0 +1,9 @@
+.LOADER {
+    position: fixed;
+    top: calc(50% - 100px);
+    left: calc(50% - 100px);
+
+    & img {
+        width: 200px;
+    }
+}

@@ -18,6 +18,15 @@ const sideBar = props => {
                     Save
                 </Button>
             </div>
+            <div className="SIDEBAR__saved">
+                <ul>
+                    <li>Saved #1</li>
+                    <li>Saved #2</li>
+                    <li>Saved #3</li>
+                    <li>Saved #4</li>
+                    <li>Saved #5</li>
+                </ul>
+            </div>
         </aside>
     );
 };

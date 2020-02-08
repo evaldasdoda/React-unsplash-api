@@ -1,9 +1,10 @@
-@import '../../Assets/style.scss';
+@import "../../Assets/style.scss";
 .IMAGE-CARD {
     width: 350px;
     height: 440px;
     border: 1px solid $orange;
     margin: $space-md auto 0 auto;
+    position: relative;
 
     &__imageContainer {
         overflow: hidden;
@@ -26,6 +27,8 @@
         padding: $space-sm;
         color: $textmain1;
         font-size: $font-xs;
+        // border: 1px solid $orange;
+
         & .creator,
         .like-count,
         .description {

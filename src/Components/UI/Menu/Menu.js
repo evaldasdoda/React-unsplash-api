@@ -10,12 +10,14 @@ require('./Menu.scss');
 const menu = props => {
     return (
         <header className="MENU">
-            <div className="MENU__logo">
-                <Logo />
+            <div className="MENU__container">
+                <div className="MENU__container-logo">
+                    <Logo />
+                </div>
+                <nav className="MENU__container-nav">
+                    <NavigationItems />
+                </nav>
             </div>
-            <nav className="MENU__nav">
-                <NavigationItems />
-            </nav>
         </header>
     );
 };

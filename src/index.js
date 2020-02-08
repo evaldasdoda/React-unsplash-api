@@ -6,6 +6,9 @@ import './Assets/style.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+// TODO --> React Redux tutorial: connecting React with Redux
+// FROM --> https://www.valentinog.com/blog/redux/
+
 ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

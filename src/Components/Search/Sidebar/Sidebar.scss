@@ -6,4 +6,28 @@
         display: flex;
         justify-content: space-between;
     }
+    &__saved {
+        border: 2px solid $orange;
+        border-radius: $radius-md;
+        margin: $space-sm 0 0 0;
+        padding: $space-sm;
+        transition: all $duration-xs;
+        &:hover {
+            border-radius: $radius-sm;
+            border: 2px solid $d-orange;
+        }
+
+        & ul {
+            list-style: none;
+            & li {
+                cursor: pointer;
+                position: relative;
+                margin: $space-xs 0 0 0;
+                font-size: $font-xxs;
+                &:hover {
+                    color: $orange;
+                }
+            }
+        }
+    }
 }

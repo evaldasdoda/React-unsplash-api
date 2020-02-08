@@ -1,7 +1,12 @@
-@import '../../Assets/style.scss';
+@import "../../Assets/style.scss";
 
 .SEARCH {
     min-height: 70vh;
+    &__title {
+        width: 100%;
+        text-align: center;
+        font-size: $font-xxl;
+    }
     &__container {
         margin: $space-md 0 0 0;
         &-pagination {
@@ -9,6 +14,21 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+        }
+        &-err {
+            margin: $space-xs 0 0 0;
+            font-size: $font-md;
+            color: $red;
+            text-align: center;
+            & .closeErr {
+                cursor: pointer;
+                color: $red;
+                margin-left: $space-md;
+                transition: all $duration-xs;
+                &:hover {
+                    opacity: 0.8;
+                }
+            }
         }
     }
 }
