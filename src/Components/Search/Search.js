@@ -32,7 +32,9 @@ class Search extends React.Component {
             nextPage = _.clone(this.state.page) + 1;
             this.handleSubmit(nextPage);
             if (nextPage > 1) {
-                this.setState({ disabledBtn: false });
+                this.setState(prevState => ({
+                    disabledBtn: !prevState.disabledBtn
+                }));
             }
             return;
         }
@@ -41,7 +43,9 @@ class Search extends React.Component {
             this.setState({ err: '' });
             this.handleSubmit(nextPage);
             if (nextPage === 1) {
-                this.setState({ disabledBtn: true });
+                this.setState(prevState => ({
+                    disabledBtn: !prevState.disabledBtn
+                }));
             }
             return;
         }
@@ -60,9 +64,9 @@ class Search extends React.Component {
             '&client_id=' +
             this.state.clientId;
 
-        this.setState({ loading: true });
-
-        console.log('[Submit] -' + this.state.photo);
+        this.setState(prevState => ({
+            loading: !prevState.loading
+        }));
 
         axios
             .get(URL)
