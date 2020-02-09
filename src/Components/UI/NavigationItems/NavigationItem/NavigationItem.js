@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styles
 require('../NavigationItems.scss');
@@ -11,6 +12,11 @@ const navigationItem = props => {
             </a>
         </li>
     );
+};
+
+navigationItem.propTypes = {
+    link: PropTypes.string,
+    active: PropTypes.string
 };
 
 export default navigationItem;

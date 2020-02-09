@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styles
 require('./ImageCard.scss');
@@ -26,4 +27,13 @@ const imageCard = props => {
         </div>
     );
 };
+
+imageCard.propTypes = {
+    imageDownloadUrl: PropTypes.string,
+    imageUrl: PropTypes.string,
+    imageCreated: PropTypes.string,
+    imageLikes: PropTypes.number,
+    imageDescription: PropTypes.string
+};
+
 export default imageCard;

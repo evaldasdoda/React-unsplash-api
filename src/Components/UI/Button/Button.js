@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Styles
 require('./Button.scss');
@@ -9,6 +10,13 @@ const button = props => {
             {props.children}
         </button>
     );
+};
+
+button.propTypes = {
+    disabled: PropTypes.bool,
+    class: PropTypes.string,
+    onClick: PropTypes.func,
+    type: PropTypes.string
 };
 
 export default button;

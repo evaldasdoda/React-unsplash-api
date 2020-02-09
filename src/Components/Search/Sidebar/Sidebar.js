@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // Components
 
@@ -7,22 +8,22 @@ import Button from '../../UI/Button/Button';
 // Styles
 require('./Sidebar.scss');
 
-const sideBar = props => {
+const sidebar = props => {
     return (
-        <aside className='SIDEBAR'>
-            <div className='SIDEBAR__buttons'>
-                <div className='SIDEBAR__buttons-search'>
-                    <Button clicked={props.search} type='submit'>
+        <aside className="SIDEBAR">
+            <div className="SIDEBAR__buttons">
+                <div className="SIDEBAR__buttons-search">
+                    <Button clicked={props.search} type="submit">
                         Search
                     </Button>
                 </div>
-                <div className='SIDEBAR__buttons-save'>
-                    <Button clicked={props.search} type='submit'>
+                <div className="SIDEBAR__buttons-save">
+                    <Button clicked={props.search} type="submit">
                         Save
                     </Button>
                 </div>
             </div>
-            <div className='SIDEBAR__saved' style={{ left: props.show ? '0' : '-100%' }}>
+            <div className="SIDEBAR__saved" style={{ left: props.show ? '0' : '-100%' }}>
                 <ul>
                     <li>Saved #1</li>
                     <li>Saved #2</li>
@@ -35,4 +36,9 @@ const sideBar = props => {
     );
 };
 
-export default sideBar;
+sidebar.propTypes = {
+    show: PropTypes.bool,
+    search: PropTypes.func
+};
+
+export default sidebar;

@@ -115,7 +115,7 @@ class Search extends React.Component {
                                         placeholder="Search for Photos..."
                                     />
                                     <div className="SEARCH__container-err" style={{ display: this.state.err ? '' : 'none' }}>
-                                        {this.state.err}{' '}
+                                        {this.state.err}
                                         <span className="closeErr" onClick={() => this.closeErr()}>
                                             X
                                         </span>
@@ -123,12 +123,13 @@ class Search extends React.Component {
                                     <div className="container">
                                         <div className="row">
                                             <div className="SEARCH__container-mobileBtn">
-                                                <Button clicked={() => this.handleSubmit(this.state.page)} type='submit'> Search </Button>
-                                                <Button clicked={() => this.handleShow()} > Saved </Button>
-                                                <Button > Save </Button>
+                                                <Button clicked={() => this.handleSubmit(this.state.page)} type="submit">
+                                                    Search
+                                                </Button>
+                                                <Button clicked={() => this.handleShow()}> Saved </Button>
+                                                <Button> Save </Button>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div className="row">
                                         {this.state.result.map(photo => (
@@ -144,15 +145,17 @@ class Search extends React.Component {
                                             </div>
                                         ))}
                                     </div>
-                                    <div className="row" style={{ display: this.state.showBtn ? '' : 'none' }}>
-                                        <div className="SEARCH__container-pagination">
-                                            <Button
-                                                disabled={this.state.disabledBtn}
-                                                clicked={() => this.handlePagination('prev')}
-                                            >
-                                                Prev
-                                            </Button>
-                                            <Button clicked={() => this.handlePagination('next')}>Next</Button>
+                                    <div className="container" style={{ display: this.state.showBtn ? '' : 'none' }}>
+                                        <div className="row">
+                                            <div className="SEARCH__container-pagination">
+                                                <Button
+                                                    disabled={this.state.disabledBtn}
+                                                    clicked={() => this.handlePagination('prev')}
+                                                >
+                                                    Prev
+                                                </Button>
+                                                <Button clicked={() => this.handlePagination('next')}>Next</Button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
