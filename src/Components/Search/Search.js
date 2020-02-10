@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import { connect } from 'react-redux';
 
 // Redux
-import { connect } from 'react-redux';
 import { addSearch } from '../../Actions/index';
 
 // Components
@@ -133,8 +133,6 @@ class Search extends React.Component {
         this.handleSubmit(1, item);
         this.setState({ keyword: item })
     }
-
-
 
     render() {
         return (

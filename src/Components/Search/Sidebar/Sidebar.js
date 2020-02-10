@@ -19,11 +19,12 @@ class Sidebar extends React.Component {
             <div className="SIDEBAR" style={{ left: this.props.show ? '-10px' : '-100%' }}>
                 <div className="SIDEBAR__saved">
                     Your saves searches
-                    <ul>
                         {_.uniq(this.props.savedItems).map(item => (
-                            <li key={item} onClick={() => this.props.trigger(item)}>{item} <span onClick={() => this.handleDelete(item)}>X</span></li>
-                        ))}
-                    </ul>
+                        <div className="SIDEBAR__saved-item" key={item} >
+                            <span className="item" onClick={() => this.props.trigger(item)}>{item} </span>
+                            <span className="delete" onClick={() => this.handleDelete(item)}>X</span>
+                        </div>
+                    ))}
                 </div>
             </div>
         );

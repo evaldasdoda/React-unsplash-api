@@ -15,7 +15,9 @@
         width: 100%;
         &-title {
             text-align: center;
-            font-size: $font-xxl;
+            & h1{
+                font-size: $font-xl;
+            }
         }
         &-input {
             width: 80%;

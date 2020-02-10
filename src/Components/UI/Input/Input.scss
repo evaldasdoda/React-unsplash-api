@@ -7,10 +7,4 @@
     width: 100%;
     padding: $space-xxs $space-sm;
     transition: all $duration-xs;
-    &:focus,
-    &:hover {
-    }
-    &::placeholder {
-        // color: $textmain1;
-    }
 }

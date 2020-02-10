@@ -10,7 +10,6 @@ const imageCard = props => {
             <div className="IMAGE-CARD__imageContainer">
                 <a href={props.imageDownloadUrl} target="_blank" rel="noopener noreferrer">
                     <div className="IMAGE-CARD__imageContainer-image" style={{ backgroundImage: 'url(' + props.imageUrl + ')' }}>
-                        {/* <img src={props.imageUrl} alt={props.imageAlt} /> */}
                     </div>
                 </a>
             </div>

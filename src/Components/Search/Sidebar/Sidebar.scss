@@ -20,6 +20,21 @@
     }
 
     &__saved {
+        &-item{
+            & .item{
+                transition: all $duration-xs;
+                margin-top: $space-xs;
+                cursor: pointer;
+                &:hover{
+                    color: $green;
+                }
+            }
+            & .delete{
+                float: right;
+                color: $red;
+                cursor: pointer;
+            }
+        }
         & ul {
             padding: 0;
             list-style: none;
@@ -27,20 +42,14 @@
                 display: flex;
             }
             & li {
-                transition: all $duration-xs;
-                margin-top: $space-xs;
-                cursor: pointer;
-                &:hover{
-                    color: $green;
-                }
+                
+                
                 @media screen and (max-width: $sm) {
                     margin-right: $space-xs;
                 }
 
                 & span{
-                    float: right;
-                    color: red;
-                    cursor: pointer;
+                    
                 }
             }
         }
