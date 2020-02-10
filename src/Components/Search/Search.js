@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+import { connect } from 'react-redux';
+import { addSearch } from '../../Actions/index';
 
 // Components
 import Input from '../UI/Input/Input';
@@ -23,10 +25,12 @@ class Search extends React.Component {
             showBtn: false,
             disabledBtn: true,
             page: 1,
+            totalPage: 1,
             err: '',
             showSidebar: false
         };
     }
+
     handlePagination(type) {
         let nextPage = _.clone(this.state.page);
 
@@ -77,11 +81,18 @@ class Search extends React.Component {
         axios
             .get(URL)
             .then(response => {
+                console.log(response);
                 if (response.data.results.length === 0) {
                     this.setState({ err: 'Sorry, there is no images :(', loading: false });
                     return;
                 }
-                this.setState({ result: response.data.results, loading: false, showBtn: true, page: pageNumber });
+                this.setState({
+                    result: response.data.results,
+                    loading: false,
+                    showBtn: true,
+                    page: pageNumber,
+                    totalPage: response.data.total_pages
+                });
             })
             .catch(error => {
                 this.setState({ loading: false, err: 'Server error!' });
@@ -96,6 +107,12 @@ class Search extends React.Component {
         this.setState(prevState => ({
             showSidebar: !prevState.showSidebar
         }));
+    }
+
+    addToRedux(photo) {
+        console.log('[SEARCH - PHOTO] - ' + photo);
+        const { addSearch } = this.props;
+        addSearch(this.state.photo);
     }
 
     render() {
@@ -128,11 +145,11 @@ class Search extends React.Component {
                                         </span>
                                     </div>
                                     <div className="SEARCH__header-buttons">
-                                        <Button clicked={() => this.handleSubmit(this.state.page)} type="submit">
+                                        <Button clicked={() => this.handleShow()}> Saved </Button>
+                                        <Button clicked={() => this.handleSubmit(this.state.page)} type="submit" class="search">
                                             Search
                                         </Button>
-                                        <Button clicked={() => this.handleShow()}> Saved </Button>
-                                        <Button> Save </Button>
+                                        <Button clicked={() => this.addToRedux()}> Save </Button>
                                     </div>
                                 </div>
                             </div>
@@ -162,6 +179,9 @@ class Search extends React.Component {
                                 >
                                     Prev
                                 </Button>
+                                <span>
+                                    {this.state.page} of {this.state.totalPage}
+                                </span>
                                 <Button class="rev" clicked={() => this.handlePagination('next')}>
                                     Next
                                 </Button>
@@ -169,32 +189,9 @@ class Search extends React.Component {
                         </div>
                     </div>
                 </div>
-
-                {/* <div className="SEARCH__container">
-                            <div className="row">
-                                <div className="col-sm-8">
-                                    
-                                    
-                                    <div className="container">
-                                        <div className="row">
-                                            
-                                        </div>
-                                    </div>
-                                    
-                                    <div className="container">
-                                        ////////////////////////////////////////
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
             </section>
         );
     }
 }
 
-export default Search;
+export default connect(null, { addSearch })(Search);

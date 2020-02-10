@@ -4,7 +4,8 @@
     min-height: 80vh;
     &__background {
         background: rgba(255, 255, 255, 0.8);
-        background-image: url('../../Assets/img/header.jpg'), linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+        background-image: linear-gradient(to right, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3)),
+            url('../../Assets/img/header.jpg');
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
@@ -48,42 +49,4 @@
             justify-content: space-between;
         }
     }
-    // &__title {
-    //     width: 100%;
-    //
-    // }
-    // &__container {
-    //     margin: $space-md 0 0 0;
-    //     &-pagination {
-    //         margin: $space-md 0 0 0;
-    //         width: 100%;
-    //         display: flex;
-    //         justify-content: space-between;
-    //     }
-    //     &-err {
-    //         margin: $space-xs 0 0 0;
-    //         font-size: $font-md;
-    //         color: $red;
-    //         text-align: center;
-    //         & .closeErr {
-    //             cursor: pointer;
-    //             color: $red;
-    //             margin-left: $space-md;
-    //             transition: all $duration-xs;
-    //             &:hover {
-    //                 opacity: 0.8;
-    //             }
-    //         }
-    //     }
-    //     &-mobileBtn{
-    //         display: none;
-
-    //         @media screen and (max-width: $xs) {
-    //             margin: $space-sm 0 0 0;
-    //             width: 100%;
-    //             display: flex;
-    //             justify-content: space-between;
-    //         }
-    //     }
-    // }
 }

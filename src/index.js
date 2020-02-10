@@ -6,8 +6,16 @@ import './Assets/style.scss';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-// TODO --> React Redux tutorial: connecting React with Redux
-// FROM --> https://www.valentinog.com/blog/redux/
+import { createStore } from 'redux';
+import allReducer from './Reducers/index';
+import { Provider } from 'react-redux';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const store = createStore(allReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>,
+    document.getElementById('root')
+);
 serviceWorker.unregister();

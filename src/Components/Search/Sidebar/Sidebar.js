@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-
-// Components
-
-import Button from '../../UI/Button/Button';
+import { useSelector } from 'react-redux';
 
 // Styles
 require('./Sidebar.scss');
 
-const sidebar = props => {
+function sidebar(props) {
+    // const saved = useSelector(state => state.search);
+    // console.log(saved);
     return (
         <div className="SIDEBAR" style={{ left: props.show ? '-10px' : '-100%' }}>
             <div className="SIDEBAR__saved">
@@ -22,7 +21,7 @@ const sidebar = props => {
             </div>
         </div>
     );
-};
+}
 
 sidebar.propTypes = {
     show: PropTypes.bool
