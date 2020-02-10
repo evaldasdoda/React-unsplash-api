@@ -9,6 +9,7 @@ const input = props => {
         <input
             type={props.type}
             name={props.name}
+            value={props.value}
             className={'INPUT ' + props.class}
             onChange={props.onchange}
             placeholder={props.placeholder}
@@ -19,6 +20,7 @@ const input = props => {
 input.propTypes = {
     type: PropTypes.string,
     name: PropTypes.string,
+    value: PropTypes.string,
     onchange: PropTypes.func,
     placeholder: PropTypes.string
 };

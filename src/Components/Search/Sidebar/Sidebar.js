@@ -1,30 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
+import { connect } from 'react-redux';
+import _ from 'lodash';
+
+// Redux
+import { removeSearch } from '../../../Actions/index';
 
 // Styles
 require('./Sidebar.scss');
 
-function sidebar(props) {
-    // const saved = useSelector(state => state.search);
-    // console.log(saved);
-    return (
-        <div className="SIDEBAR" style={{ left: props.show ? '-10px' : '-100%' }}>
-            <div className="SIDEBAR__saved">
-                <ul>
-                    <li>Saved #1</li>
-                    <li>Saved #2</li>
-                    <li>Saved #3</li>
-                    <li>Saved #4</li>
-                    <li>Saved #5</li>
-                </ul>
+class Sidebar extends React.Component {
+    handleDelete(item) {
+        const { removeSearch } = this.props;
+        removeSearch(item);
+    }
+    render() {
+        return (
+            <div className="SIDEBAR" style={{ left: this.props.show ? '-10px' : '-100%' }}>
+                <div className="SIDEBAR__saved">
+                    Your saves searches
+                    <ul>
+                        {_.uniq(this.props.savedItems).map(item => (
+                            <li key={item} onClick={() => this.props.trigger(item)}>{item} <span onClick={() => this.handleDelete(item)}>X</span></li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
 
-sidebar.propTypes = {
+Sidebar.propTypes = {
     show: PropTypes.bool
 };
 
-export default sidebar;
+function mapStateToProps(state) {
+    return {
+        savedItems: state.search
+    };
+}
+
+
+export default connect(mapStateToProps, { removeSearch })(Sidebar);

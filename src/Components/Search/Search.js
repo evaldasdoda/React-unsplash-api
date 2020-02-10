@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import _ from 'lodash';
+
+// Redux
 import { connect } from 'react-redux';
 import { addSearch } from '../../Actions/index';
 
@@ -18,7 +20,7 @@ class Search extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            photo: '',
+            keyword: '',
             clientId: '846158b19e3c8378109201e17ee9e4af71ae321f5d8d0ed7204dfccc294a18f6',
             result: [],
             loading: false,
@@ -35,8 +37,9 @@ class Search extends React.Component {
         let nextPage = _.clone(this.state.page);
 
         if (type === 'next') {
+            console.log('working')
             nextPage += 1;
-            this.handleSubmit(nextPage);
+            this.handleSubmit(nextPage, this.state.keyword);
             if (nextPage > 0) {
                 this.setState({ disabledBtn: false });
             }
@@ -46,7 +49,7 @@ class Search extends React.Component {
         if (type === 'prev') {
             nextPage -= 1;
             this.setState({ err: '' });
-            this.handleSubmit(nextPage);
+            this.handleSubmit(nextPage, this.state.keyword);
             if (nextPage === 1) {
                 this.setState(prevState => ({
                     disabledBtn: !prevState.disabledBtn
@@ -57,11 +60,11 @@ class Search extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ photo: event.target.value });
+        this.setState({ keyword: event.target.value });
     }
 
-    handleSubmit(pageNumber) {
-        if (this.state.photo === '') {
+    handleSubmit(pageNumber, keyword) {
+        if (keyword === '') {
             this.setState({ err: 'Please type keywords' });
             return;
         }
@@ -70,7 +73,7 @@ class Search extends React.Component {
             'https://api.unsplash.com/search/photos?page=' +
             pageNumber +
             '&query=' +
-            this.state.photo +
+            keyword +
             '&client_id=' +
             this.state.clientId;
 
@@ -81,7 +84,6 @@ class Search extends React.Component {
         axios
             .get(URL)
             .then(response => {
-                console.log(response);
                 if (response.data.results.length === 0) {
                     this.setState({ err: 'Sorry, there is no images :(', loading: false });
                     return;
@@ -95,7 +97,7 @@ class Search extends React.Component {
                 });
             })
             .catch(error => {
-                this.setState({ loading: false, err: 'Server error!' });
+                this.setState({ loading: false, err: error });
             });
     }
 
@@ -109,11 +111,30 @@ class Search extends React.Component {
         }));
     }
 
-    addToRedux(photo) {
-        console.log('[SEARCH - PHOTO] - ' + photo);
+    addToRedux() {
+        if (this.state.keyword === '') {
+            this.setState({ err: 'There is nothing to save :(' });
+            return;
+        }
         const { addSearch } = this.props;
-        addSearch(this.state.photo);
+        addSearch(this.state.keyword);
+
+        if (this.state.showSidebar === true) {
+            return;
+        }
+
+        this.handleShow();
+        setTimeout(() => {
+            this.handleShow()
+        }, 2000)
     }
+
+    getSaveClick(item) {
+        this.handleSubmit(1, item);
+        this.setState({ keyword: item })
+    }
+
+
 
     render() {
         return (
@@ -121,7 +142,7 @@ class Search extends React.Component {
                 <div className="loader" style={{ display: this.state.loading ? '' : 'none' }}>
                     <Loader />
                 </div>
-                <Sidebar show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
+                <Sidebar trigger={this.getSaveClick.bind(this)} show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
                 <div className="SEARCH">
                     <div className="SEARCH__background d-flex align-items-center">
                         <div className="container">
@@ -134,7 +155,8 @@ class Search extends React.Component {
                                         <Input
                                             onchange={this.handleChange.bind(this)}
                                             type="text"
-                                            name="photo"
+                                            value={this.state.keyword}
+                                            name="keyword"
                                             placeholder="Search for Photos..."
                                         />
                                     </div>
@@ -146,10 +168,10 @@ class Search extends React.Component {
                                     </div>
                                     <div className="SEARCH__header-buttons">
                                         <Button clicked={() => this.handleShow()}> Saved </Button>
-                                        <Button clicked={() => this.handleSubmit(this.state.page)} type="submit" class="search">
+                                        <Button clicked={() => this.handleSubmit(1, this.state.keyword)} type="submit" class="search">
                                             Search
                                         </Button>
-                                        <Button clicked={() => this.addToRedux()}> Save </Button>
+                                        <Button disabled={this.state.disableSaveBtn} clicked={() => this.addToRedux()}> Save </Button>
                                     </div>
                                 </div>
                             </div>
