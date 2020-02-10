@@ -1,10 +1,14 @@
-@import "../../Assets/style.scss";
+@import '../../Assets/style.scss';
 .IMAGE-CARD {
     width: 350px;
     height: 440px;
-    border: 1px solid $orange;
     margin: $space-md auto 0 auto;
-    position: relative;
+    border-radius: $radius-sm;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    transition: all $duration-xs;
+    &:hover {
+        box-shadow: 10px 10px 30px 0px rgba(0, 0, 0, 0.75);
+    }
 
     &__imageContainer {
         overflow: hidden;
@@ -24,10 +28,10 @@
         }
     }
     &__textContainer {
+        background-color: $white;
         padding: $space-sm;
         color: $textmain1;
         font-size: $font-xs;
-        // border: 1px solid $orange;
 
         & .creator,
         .like-count,
@@ -35,6 +39,9 @@
             margin: $space-xs 0 0 0;
         }
         & .creator {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
             font-size: $font-md;
             & span {
                 font-weight: bold;

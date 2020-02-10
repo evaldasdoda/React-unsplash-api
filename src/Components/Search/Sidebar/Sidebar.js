@@ -10,20 +10,8 @@ require('./Sidebar.scss');
 
 const sidebar = props => {
     return (
-        <aside className="SIDEBAR">
-            <div className="SIDEBAR__buttons">
-                <div className="SIDEBAR__buttons-search">
-                    <Button clicked={props.search} type="submit">
-                        Search
-                    </Button>
-                </div>
-                <div className="SIDEBAR__buttons-save">
-                    <Button clicked={props.search} type="submit">
-                        Save
-                    </Button>
-                </div>
-            </div>
-            <div className="SIDEBAR__saved" style={{ left: props.show ? '0' : '-100%' }}>
+        <div className="SIDEBAR" style={{ left: props.show ? '-10px' : '-100%' }}>
+            <div className="SIDEBAR__saved">
                 <ul>
                     <li>Saved #1</li>
                     <li>Saved #2</li>
@@ -32,13 +20,12 @@ const sidebar = props => {
                     <li>Saved #5</li>
                 </ul>
             </div>
-        </aside>
+        </div>
     );
 };
 
 sidebar.propTypes = {
-    show: PropTypes.bool,
-    search: PropTypes.func
+    show: PropTypes.bool
 };
 
 export default sidebar;

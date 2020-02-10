@@ -16,7 +16,7 @@ const navigationItem = props => {
 
 navigationItem.propTypes = {
     link: PropTypes.string,
-    active: PropTypes.string
+    active: PropTypes.bool
 };
 
 export default navigationItem;

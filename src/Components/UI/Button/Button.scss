@@ -1,17 +1,18 @@
 @import '../../../Assets/style.scss';
 
 .BUTTON {
-    background-color: transparent;
-    border: 2px solid $orange;
-    border-radius: $radius-md;
+    background-color: $white;
+    border-radius: $radius-sm;
     padding: $space-xxs $space-sm;
     transition: all $duration-xs;
+    border: none;
     &:active,
     &:hover {
-        border: 2px solid $d-orange;
-        border-radius: $radius-sm;
+        transform: translate3d(-5px, -5px, -5px);
+        box-shadow: 10px 10px 0px -3px rgba(0, 0, 0, 0.75);
     }
-    &-rev {
+    &.rev {
+        border: 1px solid $black;
     }
     &-active {
     }

@@ -28,19 +28,19 @@ class Search extends React.Component {
         };
     }
     handlePagination(type) {
-        let nextPage;
+        let nextPage = _.clone(this.state.page);
+
         if (type === 'next') {
-            nextPage = _.clone(this.state.page) + 1;
+            nextPage += 1;
             this.handleSubmit(nextPage);
-            if (nextPage > 1) {
-                this.setState(prevState => ({
-                    disabledBtn: !prevState.disabledBtn
-                }));
+            if (nextPage > 0) {
+                this.setState({ disabledBtn: false });
             }
             return;
         }
+
         if (type === 'prev') {
-            nextPage = _.clone(this.state.page) - 1;
+            nextPage -= 1;
             this.setState({ err: '' });
             this.handleSubmit(nextPage);
             if (nextPage === 1) {
@@ -57,6 +57,11 @@ class Search extends React.Component {
     }
 
     handleSubmit(pageNumber) {
+        if (this.state.photo === '') {
+            this.setState({ err: 'Please type keywords' });
+            return;
+        }
+
         const URL =
             'https://api.unsplash.com/search/photos?page=' +
             pageNumber +
@@ -73,7 +78,7 @@ class Search extends React.Component {
             .get(URL)
             .then(response => {
                 if (response.data.results.length === 0) {
-                    this.setState({ err: 'Sorry, there is no more images :(', loading: false });
+                    this.setState({ err: 'Sorry, there is no images :(', loading: false });
                     return;
                 }
                 this.setState({ result: response.data.results, loading: false, showBtn: true, page: pageNumber });
@@ -82,6 +87,7 @@ class Search extends React.Component {
                 this.setState({ loading: false, err: 'Server error!' });
             });
     }
+
     closeErr() {
         this.setState({ err: '' });
     }
@@ -94,78 +100,98 @@ class Search extends React.Component {
 
     render() {
         return (
-            <section className="SECTION">
+            <section className="SECTION-FIRST">
                 <div className="loader" style={{ display: this.state.loading ? '' : 'none' }}>
                     <Loader />
                 </div>
+                <Sidebar show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
                 <div className="SEARCH">
-                    <div className="container">
-                        <div className="row">
-                            <div className="SEARCH__title">
-                                <h1>Unsplash Photo search</h1>
-                            </div>
-                        </div>
-                        <div className="SEARCH__container">
+                    <div className="SEARCH__background d-flex align-items-center">
+                        <div className="container">
                             <div className="row">
-                                <div className="col-sm-8">
-                                    <Input
-                                        onchange={this.handleChange.bind(this)}
-                                        type="text"
-                                        name="photo"
-                                        placeholder="Search for Photos..."
-                                    />
-                                    <div className="SEARCH__container-err" style={{ display: this.state.err ? '' : 'none' }}>
+                                <div className="SEARCH__header">
+                                    <div className="SEARCH__header-title">
+                                        <h1>Unsplash Photo search</h1>
+                                    </div>
+                                    <div className="SEARCH__header-input">
+                                        <Input
+                                            onchange={this.handleChange.bind(this)}
+                                            type="text"
+                                            name="photo"
+                                            placeholder="Search for Photos..."
+                                        />
+                                    </div>
+                                    <div className="SEARCH__header-err" style={{ display: this.state.err ? '' : 'none' }}>
                                         {this.state.err}
                                         <span className="closeErr" onClick={() => this.closeErr()}>
                                             X
                                         </span>
                                     </div>
-                                    <div className="container">
-                                        <div className="row">
-                                            <div className="SEARCH__container-mobileBtn">
-                                                <Button clicked={() => this.handleSubmit(this.state.page)} type="submit">
-                                                    Search
-                                                </Button>
-                                                <Button clicked={() => this.handleShow()}> Saved </Button>
-                                                <Button> Save </Button>
-                                            </div>
-                                        </div>
+                                    <div className="SEARCH__header-buttons">
+                                        <Button clicked={() => this.handleSubmit(this.state.page)} type="submit">
+                                            Search
+                                        </Button>
+                                        <Button clicked={() => this.handleShow()}> Saved </Button>
+                                        <Button> Save </Button>
                                     </div>
-                                    <div className="row">
-                                        {this.state.result.map(photo => (
-                                            <div className="col" key={photo.id}>
-                                                <ImageCard
-                                                    imageUrl={photo.urls.small}
-                                                    imageAlt={photo.alt_description}
-                                                    imageCreated={photo.user.name}
-                                                    imageLikes={photo.likes}
-                                                    imageDescription={photo.description}
-                                                    imageDownloadUrl={photo.links.download}
-                                                />
-                                            </div>
-                                        ))}
-                                    </div>
-                                    <div className="container" style={{ display: this.state.showBtn ? '' : 'none' }}>
-                                        <div className="row">
-                                            <div className="SEARCH__container-pagination">
-                                                <Button
-                                                    disabled={this.state.disabledBtn}
-                                                    clicked={() => this.handlePagination('prev')}
-                                                >
-                                                    Prev
-                                                </Button>
-                                                <Button clicked={() => this.handlePagination('next')}>Next</Button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="col-sm-4">
-                                    <Sidebar show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <div className="container">
+                        <div className="row">
+                            {this.state.result.map(photo => (
+                                <div className="col" key={photo.id}>
+                                    <ImageCard
+                                        imageUrl={photo.urls.small}
+                                        imageAlt={photo.alt_description}
+                                        imageCreated={photo.user.name}
+                                        imageLikes={photo.likes}
+                                        imageDescription={photo.description}
+                                        imageDownloadUrl={photo.links.download}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                        <div className="row">
+                            <div className="SEARCH__container-pagination" style={{ display: this.state.showBtn ? '' : 'none' }}>
+                                <Button
+                                    class="rev"
+                                    disabled={this.state.disabledBtn}
+                                    clicked={() => this.handlePagination('prev')}
+                                >
+                                    Prev
+                                </Button>
+                                <Button class="rev" clicked={() => this.handlePagination('next')}>
+                                    Next
+                                </Button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
+
+                {/* <div className="SEARCH__container">
+                            <div className="row">
+                                <div className="col-sm-8">
+                                    
+                                    
+                                    <div className="container">
+                                        <div className="row">
+                                            
+                                        </div>
+                                    </div>
+                                    
+                                    <div className="container">
+                                        ////////////////////////////////////////
+                                    </div>
+                                </div>
+                                <div className="col-sm-4">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> */}
             </section>
         );
     }

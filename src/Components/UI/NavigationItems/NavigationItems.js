@@ -12,7 +12,6 @@ const navigationItems = props => {
             <NavigationItem link="/" active>
                 Home
             </NavigationItem>
-            <NavigationItem link="/">About </NavigationItem>
         </ul>
     );
 };

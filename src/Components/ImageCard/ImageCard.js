@@ -22,7 +22,6 @@ const imageCard = props => {
                 <div className="description" style={{ display: props.imageDescription ? '' : 'none' }}>
                     Description: {props.imageDescription}{' '}
                 </div>
-                {/* <div>Download  </div> */}
             </div>
         </div>
     );
