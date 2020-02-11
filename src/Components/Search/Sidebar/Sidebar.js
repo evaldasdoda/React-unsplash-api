@@ -19,12 +19,18 @@ class Sidebar extends React.Component {
             <div className="SIDEBAR" style={{ left: this.props.show ? '-10px' : '-100%' }}>
                 <div className="SIDEBAR__saved">
                     Your saves searches
+                    <div className="SIDEBAR__saved-container">
                         {_.uniq(this.props.savedItems).map(item => (
-                        <div className="SIDEBAR__saved-item" key={item} >
-                            <span className="item" onClick={() => this.props.trigger(item)}>{item} </span>
-                            <span className="delete" onClick={() => this.handleDelete(item)}>X</span>
-                        </div>
-                    ))}
+                            <div className="SIDEBAR__saved-container-item" key={item}>
+                                <span className="item" onClick={() => this.props.trigger(item)}>
+                                    {item}{' '}
+                                </span>
+                                <span className="delete" onClick={() => this.handleDelete(item)}>
+                                    X
+                                </span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </div>
         );
@@ -40,6 +46,5 @@ function mapStateToProps(state) {
         savedItems: state.search
     };
 }
-
 
 export default connect(mapStateToProps, { removeSearch })(Sidebar);

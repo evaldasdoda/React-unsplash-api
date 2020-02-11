@@ -37,7 +37,6 @@ class Search extends React.Component {
         let nextPage = _.clone(this.state.page);
 
         if (type === 'next') {
-            console.log('working')
             nextPage += 1;
             this.handleSubmit(nextPage, this.state.keyword);
             if (nextPage > 0) {
@@ -125,13 +124,13 @@ class Search extends React.Component {
 
         this.handleShow();
         setTimeout(() => {
-            this.handleShow()
-        }, 2000)
+            this.handleShow();
+        }, 2000);
     }
 
     getSaveClick(item) {
         this.handleSubmit(1, item);
-        this.setState({ keyword: item })
+        this.setState({ keyword: item });
     }
 
     render() {
@@ -140,7 +139,11 @@ class Search extends React.Component {
                 <div className="loader" style={{ display: this.state.loading ? '' : 'none' }}>
                     <Loader />
                 </div>
-                <Sidebar trigger={this.getSaveClick.bind(this)} show={this.state.showSidebar} search={() => this.handleSubmit(this.state.page)} />
+                <Sidebar
+                    trigger={this.getSaveClick.bind(this)}
+                    show={this.state.showSidebar}
+                    search={() => this.handleSubmit(this.state.page)}
+                />
                 <div className="SEARCH">
                     <div className="SEARCH__background d-flex align-items-center">
                         <div className="container">
@@ -166,10 +169,17 @@ class Search extends React.Component {
                                     </div>
                                     <div className="SEARCH__header-buttons">
                                         <Button clicked={() => this.handleShow()}> Saved </Button>
-                                        <Button clicked={() => this.handleSubmit(1, this.state.keyword)} type="submit" class="search">
+                                        <Button
+                                            clicked={() => this.handleSubmit(1, this.state.keyword)}
+                                            type="submit"
+                                            class="search"
+                                        >
                                             Search
                                         </Button>
-                                        <Button disabled={this.state.disableSaveBtn} clicked={() => this.addToRedux()}> Save </Button>
+                                        <Button disabled={this.state.disableSaveBtn} clicked={() => this.addToRedux()}>
+                                            {' '}
+                                            Save{' '}
+                                        </Button>
                                     </div>
                                 </div>
                             </div>
