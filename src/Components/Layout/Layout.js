@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter, Route, Link, Switch } from 'react-router-dom';
+import { HashRouter, Route, Switch } from 'react-router-dom';
 
 // Components
 import Hoc from '../../Hoc/Hoc';
@@ -18,7 +18,6 @@ const layout = props => (
                 <Route exact path="/" component={Search} />
             </Switch>
         </HashRouter>
-        {/* <Search /> */}
         <Footer />
     </Hoc>
 );

@@ -7,7 +7,9 @@ require('./Loader.scss');
 const loader = props => {
     return (
         <div className="LOADER">
-            <img className="LOADER__img" src={Loader} alt="loader" />
+            <div className="LOADER__container">
+                <img className="LOADER__container-img" src={Loader} alt="loader" />
+            </div>
         </div>
     );
 };

@@ -35,6 +35,9 @@
                 color: $red;
                 float: right;
             }
+            @media screen and (max-width: $xs) {
+                width: 80%;
+            }
         }
         &-buttons {
             width: 80%;

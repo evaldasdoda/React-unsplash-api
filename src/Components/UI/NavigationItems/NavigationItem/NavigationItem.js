@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { HashRouter, NavLink } from 'react-router-dom';
 
 // Styles
 require('../NavigationItems.scss');
@@ -7,9 +8,9 @@ require('../NavigationItems.scss');
 const navigationItem = props => {
     return (
         <li className="NAVIGATION__item">
-            <a href={props.link} className={props.active ? 'active' : null}>
-                {props.children}
-            </a>
+            <HashRouter>
+                <NavLink to={props.link}> {props.children} </NavLink>
+            </HashRouter>
         </li>
     );
 };

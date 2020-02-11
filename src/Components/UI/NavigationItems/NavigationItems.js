@@ -9,9 +9,7 @@ require('./NavigationItems.scss');
 const navigationItems = props => {
     return (
         <ul className="NAVIGATION">
-            <NavigationItem link="/" active>
-                Home
-            </NavigationItem>
+            <NavigationItem link="/">Home</NavigationItem>
         </ul>
     );
 };

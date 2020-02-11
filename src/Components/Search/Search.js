@@ -39,6 +39,7 @@ class Search extends React.Component {
         if (type === 'next') {
             nextPage += 1;
             this.handleSubmit(nextPage, this.state.keyword);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             if (nextPage > 0) {
                 this.setState({ disabledBtn: false });
             }
@@ -49,6 +50,7 @@ class Search extends React.Component {
             nextPage -= 1;
             this.setState({ err: '' });
             this.handleSubmit(nextPage, this.state.keyword);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
             if (nextPage === 1) {
                 this.setState(prevState => ({
                     disabledBtn: !prevState.disabledBtn
@@ -177,8 +179,7 @@ class Search extends React.Component {
                                             Search
                                         </Button>
                                         <Button disabled={this.state.disableSaveBtn} clicked={() => this.addToRedux()}>
-                                            {' '}
-                                            Save{' '}
+                                            Save
                                         </Button>
                                     </div>
                                 </div>
