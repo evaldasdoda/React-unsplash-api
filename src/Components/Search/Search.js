@@ -150,7 +150,7 @@ class Search extends React.Component {
                             <div className="row">
                                 <div className="SEARCH__header">
                                     <div className="SEARCH__header-title">
-                                        <h1>Unsplash Photo search 123</h1>
+                                        <h1>Unsplash Photo search</h1>
                                     </div>
                                     <div className="SEARCH__header-input">
                                         <Input
