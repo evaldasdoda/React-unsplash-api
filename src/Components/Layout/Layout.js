@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashRouter, Route, Link, Switch } from 'react-router-dom';
 
 // Components
 import Hoc from '../../Hoc/Hoc';
@@ -12,7 +13,12 @@ require('./Layout.scss');
 const layout = props => (
     <Hoc>
         <Menu />
-        <Search />
+        <HashRouter>
+            <Switch>
+                <Route exact path="/" component={Search} />
+            </Switch>
+        </HashRouter>
+        {/* <Search /> */}
         <Footer />
     </Hoc>
 );
