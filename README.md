@@ -14,6 +14,8 @@ npm install
 
 ## Usage
 
+Page is hosted on Github pages [https://evaldasdoda.github.io/React-unsplash-api/](https://evaldasdoda.github.io/React-unsplash-api/)<br />
+
 To run the app in development mode.
 
 ```bash

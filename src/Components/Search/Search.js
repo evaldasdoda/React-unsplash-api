@@ -186,7 +186,7 @@ class Search extends React.Component {
                         </div>
                     </div>
                     <div className="container">
-                        <div className="row">
+                        <div className="row rowfix">
                             {this.state.result.map(photo => (
                                 <div className="col" key={photo.id}>
                                     <ImageCard

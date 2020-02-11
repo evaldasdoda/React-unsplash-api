@@ -15,7 +15,7 @@
         width: 100%;
         &-title {
             text-align: center;
-            & h1{
+            & h1 {
                 font-size: $font-xl;
             }
         }
@@ -41,6 +41,13 @@
             margin: $space-md auto 0;
             display: flex;
             justify-content: space-between;
+            @media screen and (max-width: $xxs) {
+                flex-flow: wrap;
+                margin: $space-sm auto 0;
+                & .BUTTON {
+                    margin: $space-sm auto 0;
+                }
+            }
         }
     }
     &__container {
@@ -49,6 +56,11 @@
             width: 100%;
             display: flex;
             justify-content: space-between;
+        }
+    }
+    & .rowfix {
+        @media screen and (max-width: $xs) {
+            display: block;
         }
     }
 }

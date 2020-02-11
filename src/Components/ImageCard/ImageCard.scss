@@ -1,4 +1,4 @@
-@import "../../Assets/style.scss";
+@import '../../Assets/style.scss';
 .IMAGE-CARD {
     width: 350px;
     height: 440px;
@@ -11,6 +11,7 @@
     }
     @media screen and (max-width: $xs) {
         width: 100%;
+        height: auto;
     }
 
     &__imageContainer {
@@ -45,6 +46,11 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            @media screen and (max-width: $xs) {
+                text-overflow: unset;
+                overflow: unset;
+                white-space: unset;
+            }
             font-size: $font-md;
             & span {
                 font-weight: bold;
@@ -60,6 +66,11 @@
             text-overflow: ellipsis;
             overflow: hidden;
             white-space: nowrap;
+            @media screen and (max-width: $xs) {
+                text-overflow: unset;
+                overflow: unset;
+                white-space: unset;
+            }
         }
     }
 }
