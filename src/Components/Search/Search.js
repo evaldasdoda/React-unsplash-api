@@ -98,7 +98,7 @@ class Search extends React.Component {
                 });
             })
             .catch(error => {
-                this.setState({ loading: false, err: error });
+                this.setState({ loading: false, err: 'Server error' });
             });
     }
 
@@ -133,6 +133,7 @@ class Search extends React.Component {
     getSaveClick(item) {
         this.handleSubmit(1, item);
         this.setState({ keyword: item });
+        this.handleShow();
     }
 
     render() {
