@@ -1,0 +1,19 @@
+@import '../../../Assets/style.scss';
+
+.FOOTER {
+    margin-top: $space-sm;
+    background: linear-gradient(101deg, rgba(227, 102, 74, 1) 0%, rgba(160, 43, 15, 1) 100%);
+    padding-top: 2px;
+    &__container {
+        text-align: center;
+
+        padding: $space-sm;
+        background-color: $white;
+        height: 100%;
+        & a {
+            color: $black;
+            font-size: $font-md;
+            text-decoration: none;
+        }
+    }
+}
