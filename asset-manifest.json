@@ -1,27 +1,27 @@
 {
   "files": {
-    "main.css": "/React-unsplash-api/static/css/main.d709dc44.chunk.css",
-    "main.js": "/React-unsplash-api/static/js/main.148bde68.chunk.js",
-    "main.js.map": "/React-unsplash-api/static/js/main.148bde68.chunk.js.map",
+    "main.css": "/React-unsplash-api/static/css/main.a56b0ca9.chunk.css",
+    "main.js": "/React-unsplash-api/static/js/main.1f33be06.chunk.js",
+    "main.js.map": "/React-unsplash-api/static/js/main.1f33be06.chunk.js.map",
     "runtime-main.js": "/React-unsplash-api/static/js/runtime-main.4193ce07.js",
     "runtime-main.js.map": "/React-unsplash-api/static/js/runtime-main.4193ce07.js.map",
     "static/css/2.ff4cff7f.chunk.css": "/React-unsplash-api/static/css/2.ff4cff7f.chunk.css",
-    "static/js/2.50969b12.chunk.js": "/React-unsplash-api/static/js/2.50969b12.chunk.js",
-    "static/js/2.50969b12.chunk.js.map": "/React-unsplash-api/static/js/2.50969b12.chunk.js.map",
+    "static/js/2.9413feb6.chunk.js": "/React-unsplash-api/static/js/2.9413feb6.chunk.js",
+    "static/js/2.9413feb6.chunk.js.map": "/React-unsplash-api/static/js/2.9413feb6.chunk.js.map",
     "index.html": "/React-unsplash-api/index.html",
-    "precache-manifest.9a0f67c3e863b851e24744d2a45a7044.js": "/React-unsplash-api/precache-manifest.9a0f67c3e863b851e24744d2a45a7044.js",
+    "precache-manifest.90a0350c37e2038ddcce5bb53bf5b6ef.js": "/React-unsplash-api/precache-manifest.90a0350c37e2038ddcce5bb53bf5b6ef.js",
     "service-worker.js": "/React-unsplash-api/service-worker.js",
     "static/css/2.ff4cff7f.chunk.css.map": "/React-unsplash-api/static/css/2.ff4cff7f.chunk.css.map",
-    "static/css/main.d709dc44.chunk.css.map": "/React-unsplash-api/static/css/main.d709dc44.chunk.css.map",
-    "static/js/2.50969b12.chunk.js.LICENSE.txt": "/React-unsplash-api/static/js/2.50969b12.chunk.js.LICENSE.txt",
-    "static/media/Search.scss": "/React-unsplash-api/static/media/header.27275d0d.jpg",
+    "static/css/main.a56b0ca9.chunk.css.map": "/React-unsplash-api/static/css/main.a56b0ca9.chunk.css.map",
+    "static/js/2.9413feb6.chunk.js.LICENSE.txt": "/React-unsplash-api/static/js/2.9413feb6.chunk.js.LICENSE.txt",
+    "static/media/Search.scss": "/React-unsplash-api/static/media/header.621d403f.jpg",
     "static/media/loader.gif": "/React-unsplash-api/static/media/loader.c63e0de9.gif"
   },
   "entrypoints": [
     "static/js/runtime-main.4193ce07.js",
     "static/css/2.ff4cff7f.chunk.css",
-    "static/js/2.50969b12.chunk.js",
-    "static/css/main.d709dc44.chunk.css",
-    "static/js/main.148bde68.chunk.js"
+    "static/js/2.9413feb6.chunk.js",
+    "static/css/main.a56b0ca9.chunk.css",
+    "static/js/main.1f33be06.chunk.js"
   ]
 }
