@@ -36,5 +36,6 @@ Bootstrap <br />
 Lodash <br />
 Scss <br />
 Redux <br />
-Proptypes <br />
+PropTypes <br />
+React Router<br />
 Axios <br />
