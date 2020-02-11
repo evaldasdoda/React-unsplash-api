@@ -11,16 +11,14 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js');
 
-importScripts(
-  "/React-unsplash-api/precache-manifest.f7a265f7f633c04465552c0381ee18f9.js"
-);
+importScripts('/React-unsplash-api/precache-manifest.f7a265f7f633c04465552c0381ee18f9.js');
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
+self.addEventListener('message', event => {
+    if (event.data && event.data.type === 'SKIP_WAITING') {
+        self.skipWaiting();
+    }
 });
 
 workbox.core.clientsClaim();
@@ -33,7 +31,6 @@ workbox.core.clientsClaim();
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL("/React-unsplash-api/index.html"), {
-  
-  blacklist: [/^\/_/,/\/[^/?]+\.[^/]+$/],
+workbox.routing.registerNavigationRoute(workbox.precaching.getCacheKeyForURL('/React-unsplash-api/index.html'), {
+    blacklist: [/^\/_/, /\/[^/?]+\.[^/]+$/]
 });
