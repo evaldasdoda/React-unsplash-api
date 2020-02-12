@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashRouter, NavLink } from 'react-router-dom';
 
 import companyLogo from '../../Assets/img/logo.png';
 
@@ -8,7 +9,11 @@ require('./Logo.scss');
 const logo = props => {
     return (
         <div className="LOGO">
-            <img src={companyLogo} alt="Company logo" />
+            <HashRouter>
+                <NavLink to="/">
+                    <img src={companyLogo} alt="Company logo" />
+                </NavLink>
+            </HashRouter>
         </div>
     );
 };

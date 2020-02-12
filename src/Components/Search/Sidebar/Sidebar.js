@@ -18,12 +18,12 @@ class Sidebar extends React.Component {
         return (
             <div className="SIDEBAR" style={{ left: this.props.show ? '-10px' : '-100%' }}>
                 <div className="SIDEBAR__saved">
-                    Your saves searches
+                    Your saved searches
                     <div className="SIDEBAR__saved-container">
                         {_.uniq(this.props.savedItems).map(item => (
                             <div className="SIDEBAR__saved-container-item" key={item}>
                                 <span className="item" onClick={() => this.props.trigger(item)}>
-                                    {item}{' '}
+                                    {item}
                                 </span>
                                 <span className="delete" onClick={() => this.handleDelete(item)}>
                                     X

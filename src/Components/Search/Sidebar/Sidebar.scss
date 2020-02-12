@@ -10,7 +10,7 @@
     padding: $space-sm;
     transition: all $duration-xs;
     z-index: 999;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
     @media screen and (max-width: $sm) {
         top: 110px;
         max-width: $sm;
